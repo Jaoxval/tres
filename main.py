@@ -1,4 +1,5 @@
 from tres.engine import AnalysisEngine
+from tres.models import AnalysisInput
 
 
 def main():
@@ -6,9 +7,13 @@ def main():
     print("Identity Intelligence Engine")
     print()
 
+    analysis_input = AnalysisInput(
+        email="joao@gmail.com",
+    )
+
     engine = AnalysisEngine()
 
-    findings = engine.collect("joao@gmail.com")
+    findings = engine.analyze(analysis_input)
 
     for finding in findings:
         print(

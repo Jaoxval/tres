@@ -1,8 +1,10 @@
-from tres.models import Finding
+from tres.connector import Connector
+from tres.models import AnalysisInput, Finding
 
 
-class FakeEmailConnector:
-    def collect(self, email: str) -> list[Finding]:
+class FakeEmailConnector(Connector):
+
+    def collect(self, analysis_input: AnalysisInput) -> list[Finding]:
         return [
             Finding(
                 source="email",

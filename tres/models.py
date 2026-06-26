@@ -1,12 +1,17 @@
-from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass
+class AnalysisInput:
+    email: str | None = None
 
 
 @dataclass
 class Finding:
-    source: str              # de dónde viene (dns, email, github, etc.)
-    category: str            # tipo de señal (e.g. email_infrastructure)
-    key: str                 # qué se encontró (e.g. mx_records)
-    value: Any               # valor del hallazgo (e.g. present, list, true/false)
-    confidence: float        # 0.0 - 1.0
-    evidence: Optional[Dict[str, Any]] = None
+    source: str
+    category: str
+    key: str
+    value: Any
+    confidence: float
+    evidence: dict[str, Any] = field(default_factory=dict)
