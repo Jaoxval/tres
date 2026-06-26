@@ -1,4 +1,4 @@
-from tres.connectors import FakeEmailConnector
+from tres.connectors import EmailProviderConnector
 from tres.models import AnalysisInput, Finding
 
 
@@ -6,7 +6,7 @@ class AnalysisEngine:
 
     def __init__(self):
         self.connectors = [
-            FakeEmailConnector(),
+            EmailProviderConnector(),
         ]
 
     def analyze(self, analysis_input: AnalysisInput) -> list[Finding]:

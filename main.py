@@ -7,9 +7,9 @@ def main():
     print("Identity Intelligence Engine")
     print()
 
-    analysis_input = AnalysisInput(
-        email="joao@gmail.com",
-    )
+    email = input("Email: ")
+
+    analysis_input = AnalysisInput(email=email)
 
     engine = AnalysisEngine()
 
@@ -18,7 +18,8 @@ def main():
     for finding in findings:
         print(
             f"[{finding.source}] "
-            f"{finding.key}: {finding.value}"
+            f"{finding.key}: {finding.value} "
+            f"(confidence={finding.confidence})"
         )
 
 
